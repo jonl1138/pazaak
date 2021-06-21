@@ -51,6 +51,7 @@ function resetScores() {
     document.querySelector(".board-one").innerHTML = "";
     document.querySelector(".board-two").innerHTML = "";
     cpuStop = false;
+    userStop = false;
 }
 
 // resets entire game state after end of game
@@ -81,6 +82,8 @@ function resetGame() {
         img.classList.add("score2")
         scoreContainer2.appendChild(img)
     }
+    cpuWins = 0;
+    userWins = 0;
 }
 function endTurn() {
     if (p_score > 21 && cpu_score > 21) {
@@ -134,9 +137,11 @@ function endTurn() {
     }
     if (cpuWins == 3) {
         alert("CPU wins!");
+        resetGame()
     }
     if (userWins == 3) {
         alert("User wins!")
+        resetGame()
     }
 }
 
