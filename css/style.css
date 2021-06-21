@@ -1,0 +1,143 @@
+body {
+    margin: 0px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+h1 {
+    color: #ffffff;
+    height: 100%;
+}
+
+h1:hover {
+    color: #ef8354;
+}
+/* Media Queries */
+/* Phone */
+@media screen and (max-width: 500px) {
+    img {
+        width: 48px;
+    }
+}
+
+/* Class Selectors */
+.heading {
+    background-color: #4f5d75;
+    height: 60px;
+    margin: 0px;
+    position: relative;
+
+}
+
+.title {
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    bottom: 5px;
+    margin: 0px 5px;
+}
+
+.gameboard {
+    height: auto;
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.side-one {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 10px;
+}
+
+.side-two {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    margin-left: 10px;
+}
+
+.board-one {
+    height: 300px;
+    width: 100%;
+    background-color: #bfc0c0;
+    
+}
+
+.board-two {
+    height: 300px;
+    width: 100%;
+    background-color: #bfc0c0;
+}
+
+.hand-one {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #bfc0c0;
+    height: 200px;
+}
+
+.hand-two {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #bfc0c0;
+    height: 200px;
+}
+
+.card-num {
+    z-index: 2;
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    color: white;
+    font-family: ;
+}
+
+.card {
+    display: inline-block;
+    position: relative;
+}
+
+.credit {
+    position:absolute;
+    right: 5px;
+    margin: 5px 0px;
+}
+
+.button-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.score-container-one {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.score-container-two {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+.score1, .score2 {
+    width: 80px;
+}
+
+.selected {
+    border: red;
+    border-width: 5px;
+
+}
+
+.count-one {
+    position: absolute;
+    right: 5px;
+}
+
+.count-two {
+    position: absolute;
+    left: 5px;
+}
