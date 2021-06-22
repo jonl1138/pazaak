@@ -145,33 +145,12 @@ function endTurn() {
     }
 }
 
-var startingDeck = document.querySelector(".hand-two") 
-for (let i =0; i < 4; i++) {
-    let randNum = Math.floor(Math.random() * 4) + 1
-    let sign = Math.random();
-    if (sign > 0.5) {
-        randNum = -1 * randNum;
-    }
-    var newCard = document.createElement("div");
-    newCard.classList.add("card")
-    newCard.innerHTML += "<img src='images/pazaak.jpg'><span class='card-num'>" + randNum + "</span>";
-    newCard.addEventListener("click", function () {
-        newCard.classList.add("selected");
-        console.log("clicked");
-        console.log(newCard.classList);
-    })
-    startingDeck.appendChild(newCard);
-}
-
-
 // initiates a turn
 document.querySelector('.next-turn').addEventListener("click", function() {
     if (cpuStop == false) {
         cpuMove();
     }
     userMove()
-    console.log(p_score)
-    console.log(cpu_score)
     endTurn()
 });
 
@@ -182,3 +161,34 @@ document.querySelector(".hold").addEventListener("click", function() {
     }
     endTurn()
 })
+
+// populates starting deck for player
+var startingDeck = document.querySelector(".hand-two") 
+for (let i =0; i < 4; i++) {
+    let randNum = Math.floor(Math.random() * 4) + 1
+    let sign = Math.random();
+    if (sign > 0.5) {
+        randNum = -1 * randNum;
+    }
+    let newCard = document.createElement("div");
+    newCard.classList.add("card")
+    newCard.innerHTML += `<img src='images/pazaak.jpg'><span class='card-num card-num${i+1}'>${randNum}</span>`;
+    newCard.addEventListener("click", function () {
+        if (newCard.classList.contains("selected")) {
+            // remove from board-two
+            newCard.classList.remove("selected")
+            let hand = document.querySelector(".hand-two")
+            hand.appendChild(newCard)
+            p_score -= Number(newCard.textContent)
+            updateScore("user")
+        } else {
+            newCard.classList.add("selected");
+            //newCard.style.visibility = "hidden";
+            let board = document.querySelector(".board-two")
+            board.appendChild(newCard)
+            p_score += Number(newCard.textContent)
+            updateScore("user")
+        }
+    })
+    startingDeck.appendChild(newCard);
+}
