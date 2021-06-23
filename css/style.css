@@ -11,14 +11,48 @@ h1 {
 h1:hover {
     color: #ef8354;
 }
+
+button {
+    background: #4f5d75;
+    background-image: -webkit-linear-gradient(top, #4f5d75, #2d3142);
+    background-image: -moz-linear-gradient(top, #4f5d75, #2d3142);
+    background-image: -ms-linear-gradient(top, #4f5d75, #2d3142);
+    background-image: -o-linear-gradient(top, #4f5d75, #2d3142);
+    background-image: linear-gradient(to bottom, #4f5d75, #2d3142);
+    -webkit-border-radius: 13;
+    -moz-border-radius: 13;
+    border-radius: 13px;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+button:hover {
+    background: #ef8354;
+    text-decoration: none;
+}
 /* Media Queries */
 /* Phone */
 @media screen and (max-width: 500px) {
     img {
         width: 48px;
     }
+
+    .hand-one {
+        background-color: red;
+    }
 }
 
+@media screen and (max-width: 550px) {
+    .hand-one .hand-two {
+        margin-top: 10px;
+        width: 100%;
+        background-color: red;
+        height: 256px;
+    }
+}
 /* Class Selectors */
 .heading {
     background-color: #4f5d75;
@@ -74,14 +108,14 @@ h1:hover {
     margin-top: 10px;
     width: 100%;
     background-color: #bfc0c0;
-    height: 200px;
+    height: 128px;
 }
 
 .hand-two {
     margin-top: 10px;
     width: 100%;
     background-color: #bfc0c0;
-    height: 200px;
+    height: 128px;
 }
 
 .card-num {
@@ -140,4 +174,8 @@ h1:hover {
 .count-two {
     position: absolute;
     left: 5px;
+}
+
+.hidden {
+    visibility: hidden;
 }

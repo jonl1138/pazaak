@@ -57,6 +57,7 @@ function resetScores() {
 // resets entire game state after end of game
 function resetGame() {
     resetScores()
+    hideNextRound()
     var scoreContainer1 = document.querySelector(".score-container-one")
     scoreContainer1.innerHTML = ""
     for (let i =0; i < 3; i++) {
@@ -85,10 +86,19 @@ function resetGame() {
     cpuWins = 0;
     userWins = 0;
 }
+
+function unhideNextRound() {
+    document.querySelector(".next-round").classList.remove("hidden")
+}
+
+function hideNextRound() {
+    document.querySelector(".next-round").classList.add("hidden")
+}
+
 function endTurn() {
     if (p_score > 21 && cpu_score > 21) {
         alert("Draw!");
-        resetScores();
+        unhideNextRound();
     } else if (p_score > 21) {
         for (let i = 2; i >= 0; i--) {
             if (document.querySelectorAll('.score1')[i].src.includes("empty-score")) {
@@ -98,7 +108,7 @@ function endTurn() {
         }
         cpuWins ++;
         alert("Player loses with score: " + p_score + " to cpu score: " + cpu_score)
-        resetScores();
+        unhideNextRound();
     } else if (cpu_score > 21) {
         for (let i = 2; i >= 0; i--) {
             if (document.querySelectorAll('.score2')[i].src.includes("empty-score")) {
@@ -108,7 +118,7 @@ function endTurn() {
         }
         userWins ++;
         alert("Player wins with score: " + p_score + " to cpu score: " + cpu_score)
-        resetScores()
+        unhideNextRound();
     } else if (cpuStop && userStop) {
         if (cpu_score > p_score) {
             for (let i = 2; i >= 0; i--) {
@@ -119,7 +129,7 @@ function endTurn() {
             }
             cpuWins++;
             alert("Player loses with score: " + p_score + " to cpu score: " + cpu_score)
-            resetScores()
+            
         } else if (cpu_score < p_score) {
             for (let i = 2; i >= 0; i--) {
                 if (document.querySelectorAll('.score2')[i].src.includes("empty-score")) {
@@ -129,11 +139,12 @@ function endTurn() {
             }
             userWins++;
             alert("Player wins with score: " + p_score + " to cpu score: " + cpu_score)
-            resetScores()
+            
         } else {
             alert("Draw!");
-            resetScores()
+         
         }
+        unhideNextRound();   
     }
     if (cpuWins == 3) {
         alert("CPU wins!");
@@ -155,10 +166,13 @@ document.querySelector('.next-turn').addEventListener("click", function() {
 });
 
 document.querySelector(".hold").addEventListener("click", function() {
+    console.log("hold called")
     userStop = true;
     while (cpuStop == false) {
         cpuMove();
     }
+    console.log(userStop)
+    console.log(cpuStop)
     endTurn()
 })
 
@@ -192,3 +206,9 @@ for (let i =0; i < 4; i++) {
     })
     startingDeck.appendChild(newCard);
 }
+
+document.querySelector(".next-round").addEventListener("click", (event) => {
+    console.log(event.target)
+    resetScores();
+    event.target.classList.add('hidden')
+})
