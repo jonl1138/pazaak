@@ -179,3 +179,7 @@ button:hover {
 .hidden {
     visibility: hidden;
 }
+
+.board-one,.hand-one,.board-two,.hand-two, img {
+    border-radius: 15px;
+}

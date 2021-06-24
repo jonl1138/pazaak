@@ -85,14 +85,19 @@ function resetGame() {
     }
     cpuWins = 0;
     userWins = 0;
+    document.querySelector('.hold').disabled=false;
+    document.querySelector('.next-turn').disabled=false;
 }
 
 function unhideNextRound() {
     document.querySelector(".next-round").classList.remove("hidden")
+    document.querySelector('.hold').disabled=true;
+    document.querySelector('.next-turn').disabled=true;
 }
 
 function hideNextRound() {
     document.querySelector(".next-round").classList.add("hidden")
+    
 }
 
 function endTurn() {
@@ -210,5 +215,7 @@ for (let i =0; i < 4; i++) {
 document.querySelector(".next-round").addEventListener("click", (event) => {
     console.log(event.target)
     resetScores();
+    document.querySelector('.hold').disabled=false;
+    document.querySelector('.next-turn').disabled=false;
     event.target.classList.add('hidden')
 })
